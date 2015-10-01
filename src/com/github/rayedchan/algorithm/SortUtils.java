@@ -18,7 +18,7 @@ public class SortUtils
 	{
 		
 	}
-
+	
 	/**
 	 * The algorithm divides the input list into two parts: the sublist of items already sorted, which is built up from left to right at the front (left) of the list, and the sublist of items remaining to be sorted that occupy the rest of the list. Initially, the sorted sublist is empty and the unsorted sublist is the entire input list. The algorithm proceeds by finding the smallest (or largest, depending on sorting order) element in the unsorted sublist, exchanging (swapping) it with the leftmost unsorted element (putting it in sorted order), and moving the sublist boundaries one element to the right.
 	 * Time complexity: O(n^2)
@@ -60,6 +60,42 @@ public class SortUtils
 			
 			log.log(Level.INFO, "List at Iteration {0}: {1}", new Object[]{i + 1, Arrays.toString(array)});
 		}
+		
+		log.log(Level.INFO, "Sorted List: {0}", new Object[]{Arrays.toString(array)});
+	}
+	
+	/**
+	 * Compares each pair of adjacent items and swaps them if they are in the wrong order.
+	 * Maximum item is sinked to the end of the list.
+	 * Time complexity: O(n^2)
+	 * @see <a href="https://en.wikipedia.org/wiki/Bubble_sort">Wiki: Bubble Sort</a>
+	 */
+	public static void bubbleSort(int[] array)
+	{
+		int length = array.length;
+		boolean swapped;
+		log.log(Level.INFO, "Length of List: {0}", new Object[]{length});
+		log.log(Level.INFO, "Initial List: {0}", new Object[]{Arrays.toString(array)});
+		
+		// Continue iteration until there are no more swaps
+		do
+		{
+			swapped = false;
+			for(int i = 1; i < length; i++)
+			{
+				// Swap if left item is greater than right item
+				if(array[i-1] > array[i])
+				{
+					int temp = array[i-1];
+					array[i-1] = array[i];
+					array[i] = temp;
+					swapped = true;
+					log.log(Level.INFO, "List: {0}", new Object[]{Arrays.toString(array)});
+				}
+			}
+			
+			length--; // last element is sorted in place; no need to inspect anymore
+		}while(swapped);
 		
 		log.log(Level.INFO, "Sorted List: {0}", new Object[]{Arrays.toString(array)});
 	}
