@@ -87,6 +87,11 @@ public class CircularLinkedList<T>
 		count++;
 	}
 	
+	/**
+	 * Deletes all occurrences of specified item from this linked list.
+	 * @param item 		Data to be removed from list
+	 * @throws NoSuchElementException if the item is not in this linked list
+	 */
 	public void removeAll(T item)
 	{
 		// Empty linked list
