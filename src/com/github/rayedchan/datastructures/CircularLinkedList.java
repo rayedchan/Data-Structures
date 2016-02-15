@@ -1,4 +1,4 @@
-package structures.linear;
+package com.github.rayedchan.datastructures;
 
 import java.util.NoSuchElementException;
 
