@@ -1,5 +1,8 @@
 package com.github.rayedchan.datastructures;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 /**
  * Singly Linked List
  * @see 
@@ -76,6 +79,7 @@ public class LinkedList<T>
 	
 	/**
 	 * Adds a new node after the target node
+	 * O(n) inserting the new node at the end of the list
 	 * @param key	Target node data
 	 * @param toInsert	New node data
 	 */
@@ -93,6 +97,96 @@ public class LinkedList<T>
 		if(tmp != null)
 		{
 			tmp.next = new Node<T>(toInsert,tmp.next);
+		}
+	}
+	
+	/**
+	 * Insert before the target node
+	 * O(n)
+	 * @param key	Data of the target node
+	 * @param toInsert	New node data
+	 */
+	public void insertBefore(T key, T toInsert)
+	{
+		boolean found = false;
+		Node<T> prev = null; // Previous pointer
+		Node<T> curr = this.head; // Current pointer
+		
+		// iterate list to find the target node
+		while(curr != null)
+		{
+			// Found the target node
+			if(curr.data.equals(key))
+			{
+				found = true;
+				break;
+			}
+			
+			else
+			{
+				// Move both pointers forward
+				prev = curr;
+				curr = curr.next;
+			}
+		}
+		
+		// Target found case
+		if(found)
+		{
+			Node<T> newNode = new Node<T>(toInsert, curr); // Create new node pointing to the current node
+			
+			// New head case
+			if(prev == null)
+			{
+				this.head = newNode; // Set new node as the head of the list
+			}
+			
+			// Insert in between previous and current pointers
+			else
+			{
+				prev.next = newNode; // Set previous node to point to the new node
+			}
+		}
+	}
+	
+	/**
+	 * Removes the first occurrence of target node 
+	 * @param key	Target node data to remove
+	 */
+	public void remove(T key)
+	{
+		// Empty List
+		if(this.head == null)
+		{
+			throw new RuntimeException("cannot delete");
+		}
+		
+		// Target node at the beginning of the list
+		if(this.head.data.equals(key))
+		{
+			this.head = head.next;
+			return;
+		}
+		
+		Node<T> prev = null;
+		Node<T> curr = this.head;
+		
+		// Found target node
+		while(curr != null && !curr.data.equals(key))
+		{
+			prev = curr;
+			curr = curr.next;
+		}
+		
+		// Remove target node
+		if(curr != null)
+		{
+			prev.next = curr.next;
+		}
+		
+		else
+		{
+			throw new RuntimeException("target node not found");
 		}
 	}
 	
@@ -121,7 +215,9 @@ public class LinkedList<T>
 		return tmp.data; // return data on current node
 	}
 	
-	
+	/**
+	 * String representation of list
+	 */
 	@Override
 	public String toString()
 	{
@@ -152,7 +248,7 @@ public class LinkedList<T>
 		return result.toString();
 	}
 
-	// Generic Inner Node Class
+	// Inner Class: Node
 	private static class Node<T>
 	{
 		private T data; // Store generic object types
@@ -163,6 +259,49 @@ public class LinkedList<T>
 		{
 			this.data = data;
 			this.next = next;
+		}
+	}
+	
+	/**
+	 * Creates an iterator for the list
+	 * @return  Iterator Object
+	 */
+	public Iterator<T> iterator()
+	{
+	   return new LinkedListIterator();
+	}
+	
+	// Inner Class: Iterator
+	private class LinkedListIterator implements Iterator<T>
+	{
+		private Node<T> nextNode; // pointer for iteration 
+		
+		/**
+		 * Constructor
+		 */
+		public LinkedListIterator()
+		{
+			this.nextNode = head;
+		}
+		
+		@Override
+		public boolean hasNext()
+		{
+			return this.nextNode != null;
+		}
+
+		@Override
+		public T next() 
+		{
+			// Check if current node is null 
+			if(this.nextNode == null)
+			{
+				throw new NoSuchElementException();
+			}
+			 
+	        T currData = this.nextNode.data; // Get current node data
+	        this.nextNode = this.nextNode.next; // Move pointer forward
+	        return currData;
 		}
 	}
 }
