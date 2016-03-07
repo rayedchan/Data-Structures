@@ -1,4 +1,4 @@
-package com.github.rayedchan;
+package com.github.rayedchan.testdriver;
 
 import static org.junit.Assert.*;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.github.rayedchan;
+package com.github.rayedchan.testdriver;
 
 import java.util.Arrays;
 import org.junit.Test;
@@ -8,8 +8,13 @@ public class TestDriver
 {
 	public static void main(String[] args)
 	{
-		int[] array = {64,25,12,22,11};
-		sort(array);
+		int num = 15;
+		int newCap = num + (num >> 1);
+		System.out.println(num >> 1);
+		System.out.println(newCap);
+		
+		//int[] array = {64,25,12,22,11};
+		//sort(array);
 	}
 	
 	// Wrapper method
