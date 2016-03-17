@@ -106,7 +106,58 @@ public class OrderedArrayListTest
 		l.add("Kyle");
 		l.remove("Amanda");
 		l.remove("Jim");
-		System.out.println(l);
+		//System.out.println(l);
 		assertEquals("[Bobby, Kyle, Zack, null, null]", l.toString());		
+	}
+	
+	@Test
+	public void testBinarySearch() 
+	{
+		OrderedArrayList<Integer> l = new OrderedArrayList<Integer>(7);
+		l.add(5);
+		l.add(20);
+		l.add(1);
+		l.add(15);
+		l.add(50);
+		l.add(42);
+		l.add(2);
+		int index = l.binarySearch(15);
+		//System.out.println(l);
+		//System.out.println(index);
+		assertEquals(3, index);		
+	}
+	
+	@Test
+	public void testBinarySearch2() 
+	{
+		OrderedArrayList<Integer> l = new OrderedArrayList<Integer>(7);
+		l.add(5);
+		l.add(20);
+		l.add(1);
+		l.add(15);
+		l.add(50);
+		l.add(42);
+		l.add(2);
+		int index = l.binarySearch(100);
+		//System.out.println(l);
+		//System.out.println(index);
+		assertEquals(-1, index);		
+	}
+	
+	@Test
+	public void testBinarySearch3() 
+	{
+		OrderedArrayList<Integer> l = new OrderedArrayList<Integer>(7);
+		l.add(5);
+		l.add(20);
+		l.add(1);
+		l.add(15);
+		l.add(50);
+		l.add(42);
+		l.add(2);
+		int index = l.binarySearch(1);
+		//System.out.println(l);
+		//System.out.println(index);
+		assertEquals(0, index);		
 	}
 }

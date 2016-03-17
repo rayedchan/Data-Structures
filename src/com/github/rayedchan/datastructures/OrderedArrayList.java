@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 /**
  * Ordered Array List: Fixed Size
  * @author rayedchan
+ * @see https://en.wikipedia.org/wiki/Binary_search_algorithm
  * @see www.cse.unr.edu/~bebis/CS302/Lectures/SortedLists.ppt
  * @see http://www.vogella.com/tutorials/JavaDatastructureList/article.html
  */
@@ -72,7 +73,7 @@ public class OrderedArrayList<T extends Comparable<T>>
 	public void remove(T item)
 	{
 		// Call method to find the location of the item in list
-		int targetIndex = sequentialSearch(item);
+		int targetIndex = binarySearch(item);
 		
 		// Target item not in the list
 		if(targetIndex < 0)
@@ -112,6 +113,48 @@ public class OrderedArrayList<T extends Comparable<T>>
 		}
 		
 		// Target item not found
+		return -1;
+	}
+	
+	/**
+	 * Binary Search: Given an ordered list, compare the target key with the element at midpoint.
+	 * If target key is equal to key at midpoint, return index.
+	 * If target key is greater, inspect the upper sub-array (items after the middle point).
+	 * If target key is less, inspect the lower sub-array (items before the middle point).
+	 * O(log n)
+	 * @param item
+	 * @return
+	 */
+	public int binarySearch(T item)
+	{
+		int low = 0; // index at the beginning of the list
+		int high = this.data.length - 1; // index at the end of the list
+		
+		// iterate until low pointer is at or exceeds high pointer
+		while(low <= high)
+		{
+			int midPoint = (low + high) / 2; // calculate middle point
+			
+			// inspect value at middle point
+			if(this.data[midPoint].compareTo(item) == 0)
+			{
+				return midPoint;
+			}
+			
+			// value at middle point is greater than provided item => inspect left subarray
+			else if(this.data[midPoint].compareTo(item) > 0)
+			{
+				high = midPoint - 1;
+			}
+			
+			// target item is greater than item at midpoint => inspect right subarray 
+			else
+			{
+				low = midPoint + 1;
+			}
+		}
+		
+		// item not found
 		return -1;
 	}
 	
