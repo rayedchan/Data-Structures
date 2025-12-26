@@ -1,0 +1,11 @@
+# Compile Typescript code into JavaScript
+
+`npx tsc`
+
+# Run compiled JavaScript file using Node
+
+`node dist/index.js`
+
+# Using ts-node to run file directly
+
+`npx ts-node src/index.ts`
