@@ -1,4 +1,4 @@
-import { binarySearch, linearSearch } from "../search";
+import { binarySearch, linearSearch, twoCrystalBalls } from "../search";
 
 describe("linearSearch", () => {
   it("should return true when element is found", () => {
@@ -31,5 +31,76 @@ describe("binary search", () => {
   it("should return false for empty array", () => {
     const haystack: number[] = [];
     expect(binarySearch(haystack, 5)).toBe(false);
+  });
+});
+
+describe("two crystal balls", () => {
+  it("given multiple true values should return the specific index where crystal begins to break", () => {
+    const breaks: boolean[] = [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+    ];
+    expect(twoCrystalBalls(breaks)).toBe(20);
+  });
+  it("given one true value should return the specific index where crystal begins to break", () => {
+    const breaks: boolean[] = [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+    ];
+    expect(twoCrystalBalls(breaks)).toBe(9);
+  });
+  it("should return -1 for an indestructible crystal", () => {
+    const breaks: boolean[] = [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ];
+    expect(twoCrystalBalls(breaks)).toBe(-1);
   });
 });
