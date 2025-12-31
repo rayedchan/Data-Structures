@@ -37,4 +37,16 @@ describe("Linked List", () => {
     linkedList.removeAt(0);
     expect(linkedList.printList()).toBe("");
   });
+
+  it("should get node at specific index", () => {
+    const linkedList = new LinkedList();
+    linkedList.prepend(3);
+    linkedList.prepend(2);
+    linkedList.prepend(1);
+    expect(linkedList.printList()).toBe("1->2->3->");
+    expect(linkedList.get(0)?.value).toBe(1);
+    expect(linkedList.get(1)?.value).toBe(2);
+    expect(linkedList.get(2)?.value).toBe(3);
+    expect(linkedList.get(3)).toBe(null);
+  });
 });

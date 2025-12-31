@@ -2,6 +2,21 @@ export default class LinkedList<T> {
   private head: Node<T> | null = null;
   private length: number = 0;
 
+  get(index: number): Node<T> | null {
+    let ptr = this.head;
+    let position = 0;
+
+    while (ptr != null) {
+      if (position === index) {
+        return ptr;
+      }
+      position++;
+      ptr = ptr.next;
+    }
+
+    return null;
+  }
+
   prepend(value: T): void {
     const newNode = new Node(value);
 
@@ -40,6 +55,7 @@ export default class LinkedList<T> {
   removeAt(index: number): Node<T> | null {
     if (index === 0) {
       if (this.head) {
+        this.length--;
         const remove = this.head;
         this.head = this.head.next;
         return remove;
@@ -54,6 +70,7 @@ export default class LinkedList<T> {
 
     while (ptr != null) {
       if (index == position && prev) {
+        this.length--;
         prev.next = ptr.next;
         ptr.next = null;
         return ptr;
