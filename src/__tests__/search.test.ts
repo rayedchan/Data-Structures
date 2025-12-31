@@ -1,4 +1,8 @@
-import { binarySearch, linearSearch, twoCrystalBalls } from "../search";
+import {
+  binarySearch,
+  linearSearch,
+  twoCrystalBalls,
+} from "../algorithms/search";
 
 describe("linearSearch", () => {
   it("should return true when element is found", () => {
