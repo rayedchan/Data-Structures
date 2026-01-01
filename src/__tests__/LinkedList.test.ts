@@ -2,7 +2,7 @@ import LinkedList from "../data_structures/LinkedList";
 
 describe("Linked List", () => {
   it("should create a linked list with prepend", () => {
-    const linkedList = new LinkedList();
+    const linkedList = new LinkedList<number>();
     linkedList.prepend(1);
     linkedList.prepend(2);
     linkedList.prepend(3);
@@ -10,7 +10,7 @@ describe("Linked List", () => {
   });
 
   it("should create a linked list with insertAt", () => {
-    const linkedList = new LinkedList();
+    const linkedList = new LinkedList<number>();
     linkedList.insertAt(1, 0);
     linkedList.insertAt(2, 1);
     linkedList.insertAt(3, 2);
@@ -23,7 +23,7 @@ describe("Linked List", () => {
   });
 
   it("should delete from linked list", () => {
-    const linkedList = new LinkedList();
+    const linkedList = new LinkedList<number>();
     linkedList.insertAt(1, 0);
     linkedList.insertAt(2, 1);
     linkedList.insertAt(3, 2);
@@ -39,7 +39,7 @@ describe("Linked List", () => {
   });
 
   it("should get node at specific index", () => {
-    const linkedList = new LinkedList();
+    const linkedList = new LinkedList<number>();
     linkedList.prepend(3);
     linkedList.prepend(2);
     linkedList.prepend(1);
