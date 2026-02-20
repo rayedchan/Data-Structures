@@ -1,4 +1,4 @@
-import { bubbleSort } from "../algorithms/sort";
+import { bubbleSort, quickSort } from "../algorithms/sort";
 
 describe("bubble sort", () => {
   it("should sort the array", () => {
@@ -15,5 +15,13 @@ describe("bubble sort", () => {
     const array: number[] = [];
     bubbleSort(array);
     expect(array).toEqual([]);
+  });
+});
+
+describe("Quicksort", () => {
+  it("should sort the array", () => {
+    const array = [9, 3, 7, 4, 69, 420, 42];
+    quickSort(array, 0, array.length - 1);
+    expect(array).toEqual([3, 4, 7, 9, 42, 69, 420]);
   });
 });
