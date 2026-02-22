@@ -6,7 +6,7 @@ describe("Recursion", () => {
     expect(sum).toBe(15);
   });
 
-  it.only("Maze solver", () => {
+  it("Maze solver", () => {
     function drawPath(data: string[], path: Point[]) {
       const data2 = data.map((row) => row.split(""));
       path.forEach((p) => {

@@ -6,7 +6,6 @@ export function foo(n: number): number {
 
   // We shall recurse!
   const out = n + foo(n - 1);
-  console.log(n);
   return out;
 }
 
