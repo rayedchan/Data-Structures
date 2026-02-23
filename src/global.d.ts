@@ -8,3 +8,8 @@ declare type BinaryNode<T> = {
   left: BinaryNode<T> | null;
   right: BinaryNode<T> | null;
 };
+
+declare type WeightedAdjacencyMatrix = number[][];
+
+declare type GraphEdge = { to: number; weight: number };
+declare type WeightedAdjacencyList = GraphEdge[][];
