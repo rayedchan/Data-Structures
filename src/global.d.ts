@@ -13,3 +13,8 @@ declare type WeightedAdjacencyMatrix = number[][];
 
 declare type GraphEdge = { to: number; weight: number };
 declare type WeightedAdjacencyList = GraphEdge[][];
+
+declare interface ILRU<K, V> {
+  update(key: K, value: V): void;
+  get(key: K): V | undefined;
+}
